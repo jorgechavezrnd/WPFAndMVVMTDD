@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThomasMathLib", "ThomasMath
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThomasMathLibTests", "ThomasMathLibTests\ThomasMathLibTests.csproj", "{6173F4BB-577D-4BDD-8987-C13FC7A985C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThomasMathLibTestsXUnit", "ThomasMathLibTestsXUnit\ThomasMathLibTestsXUnit.csproj", "{5AF5337A-7CCC-4394-91C3-41F11AC11C4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6173F4BB-577D-4BDD-8987-C13FC7A985C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6173F4BB-577D-4BDD-8987-C13FC7A985C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6173F4BB-577D-4BDD-8987-C13FC7A985C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AF5337A-7CCC-4394-91C3-41F11AC11C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AF5337A-7CCC-4394-91C3-41F11AC11C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AF5337A-7CCC-4394-91C3-41F11AC11C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AF5337A-7CCC-4394-91C3-41F11AC11C4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
