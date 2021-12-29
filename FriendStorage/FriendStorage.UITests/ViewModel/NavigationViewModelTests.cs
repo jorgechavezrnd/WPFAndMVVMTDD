@@ -1,4 +1,6 @@
-﻿using FriendStorage.UI.ViewModel;
+﻿using FriendStorage.Model;
+using FriendStorage.UI.DataProvider;
+using FriendStorage.UI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +15,21 @@ namespace FriendStorage.UITests.ViewModel
         [Fact]
         public void ShouldLoadFriends()
         {
-            var viewModel = new NavigationViewModel();
+            var viewModel = new NavigationViewModel(new NavigationDataProviderMock());
 
             viewModel.Load();
 
-            // TOD: How to assert this?
-            //Assert.Equal(2, viewModel.Friends.Count);
+            Assert.Equal(2, viewModel.Friends.Count);
+        }
+    }
+
+    public class NavigationDataProviderMock
+        : INavigationDataProvider
+    {
+        public IEnumerable<Friend> GetAllFriends()
+        {
+            yield return new Friend { Id = 1, FirstName = "Julia" };
+            yield return new Friend { Id = 2, FirstName = "Thomas" };
         }
     }
 }
