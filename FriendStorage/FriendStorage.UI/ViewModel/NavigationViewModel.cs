@@ -1,5 +1,6 @@
 ﻿using FriendStorage.DataAccess;
 using FriendStorage.Model;
+using FriendStorage.UI.DataProvider;
 using System;
 using System.Collections.ObjectModel;
 
@@ -7,20 +8,22 @@ namespace FriendStorage.UI.ViewModel
 {
     public class NavigationViewModel : ViewModelBase
     {
-        public NavigationViewModel()
+        public NavigationViewModel(INavigationDataProvider dataProvider)
         {
             Friends = new ObservableCollection<Friend>();
+            _dataProvider = dataProvider;
         }
 
         public void Load()
         {
-            var dataService = new FileDataService();
-            foreach (var friend in dataService.GetAllFriends())
+            foreach (var friend in _dataProvider.GetAllFriends())
             {
                 Friends.Add(friend);
             }
         }
 
         public ObservableCollection<Friend> Friends { get; private set; }
+
+        private INavigationDataProvider _dataProvider;
     }
 }
