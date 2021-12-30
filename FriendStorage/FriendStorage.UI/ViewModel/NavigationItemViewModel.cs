@@ -1,4 +1,5 @@
 ﻿using FriendStorage.UI.Command;
+using Prism.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace FriendStorage.UI.ViewModel
 {
     public class NavigationItemViewModel
     {
-        public NavigationItemViewModel(int id, string displayMember)
+        public NavigationItemViewModel(int id, string displayMember, IEventAggregator eventAggregator)
         {
             Id = id;
             DisplayMember = displayMember;
