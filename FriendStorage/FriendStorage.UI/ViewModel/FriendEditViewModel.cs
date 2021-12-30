@@ -54,7 +54,7 @@ namespace FriendStorage.UI.ViewModel
 
         private bool OnSaveCanExecute(object arg)
         {
-            return Friend.IsChanged;
+            return Friend != null && Friend.IsChanged;
         }
     }
 }

@@ -65,5 +65,11 @@ namespace FriendStorage.UITests.ViewModel
 
             Assert.True(_viewModel.SaveCommand.CanExecute(null));
         }
+
+        [Fact]
+        public void ShouldDisableSaveCommandWhithoutLoad()
+        {
+            Assert.False(_viewModel.SaveCommand.CanExecute(null));
+        }
     }
 }
