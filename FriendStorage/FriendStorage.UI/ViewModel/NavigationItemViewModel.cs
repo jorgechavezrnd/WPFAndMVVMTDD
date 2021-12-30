@@ -1,4 +1,5 @@
 ﻿using FriendStorage.UI.Command;
+using FriendStorage.UI.Events;
 using Prism.Events;
 using System;
 using System.Collections.Generic;
@@ -16,15 +17,19 @@ namespace FriendStorage.UI.ViewModel
             Id = id;
             DisplayMember = displayMember;
             OpenFriendEditViewCommand = new DelegateCommand(OnFriendEditViewExecute);
+            _eventAggregator = eventAggregator;
         }
 
         private void OnFriendEditViewExecute(object obj)
         {
-            throw new NotImplementedException();
+            _eventAggregator.GetEvent<OpenFriendEditViewEvent>()
+                .Publish(Id);
         }
 
         public int Id { get; private set; }
         public string DisplayMember { get; private set; }
         public ICommand OpenFriendEditViewCommand { get; private set; }
+
+        private IEventAggregator _eventAggregator;
     }
 }
