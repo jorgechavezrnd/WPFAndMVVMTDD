@@ -4,6 +4,7 @@ using FriendStorage.UI.DataProvider;
 using FriendStorage.UI.Events;
 using FriendStorage.UI.Wrapper;
 using Prism.Events;
+using System;
 using System.ComponentModel;
 using System.Windows.Input;
 
@@ -27,9 +28,12 @@ namespace FriendStorage.UI.ViewModel
             _dataProvider = dataProvider;
             _eventAggregator = eventAggregator;
             SaveCommand = new DelegateCommand(OnSaveExecute, OnSaveCanExecute);
+            DeleteCommand = new DelegateCommand(OnDeleteExecute, OnDeleteCanExecute);
         }
 
         public ICommand SaveCommand { get; private set; }
+
+        public ICommand DeleteCommand { get; private set; }
 
         public FriendWrapper Friend
         {
@@ -73,6 +77,16 @@ namespace FriendStorage.UI.ViewModel
         private bool OnSaveCanExecute(object arg)
         {
             return Friend != null && Friend.IsChanged;
+        }
+
+        private void OnDeleteExecute(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool OnDeleteCanExecute(object arg)
+        {
+            throw new NotImplementedException();
         }
     }
 }
