@@ -1,10 +1,8 @@
-﻿using FriendStorage.Model;
-using FriendStorage.UI.Command;
+﻿using FriendStorage.UI.Command;
 using FriendStorage.UI.DataProvider;
 using FriendStorage.UI.Events;
 using FriendStorage.UI.Wrapper;
 using Prism.Events;
-using System;
 using System.ComponentModel;
 using System.Windows.Input;
 
