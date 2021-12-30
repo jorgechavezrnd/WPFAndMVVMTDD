@@ -154,5 +154,11 @@ namespace FriendStorage.UITests.ViewModel
             _viewModel.Load(null);
             Assert.False(_viewModel.DeleteCommand.CanExecute(null));
         }
+
+        [Fact]
+        public void ShouldDisableDeleteCommandWithoutLoad()
+        {
+            Assert.False(_viewModel.DeleteCommand.CanExecute(null));
+        }
     }
 }
