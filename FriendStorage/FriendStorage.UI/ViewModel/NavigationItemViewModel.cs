@@ -5,8 +5,11 @@ using System.Windows.Input;
 
 namespace FriendStorage.UI.ViewModel
 {
-    public class NavigationItemViewModel
+    public class NavigationItemViewModel : ViewModelBase
     {
+        private string _displayMember;
+        private IEventAggregator _eventAggregator;
+
         public NavigationItemViewModel(int id, string displayMember, IEventAggregator eventAggregator)
         {
             Id = id;
@@ -22,9 +25,19 @@ namespace FriendStorage.UI.ViewModel
         }
 
         public int Id { get; private set; }
-        public string DisplayMember { get; set; }
         public ICommand OpenFriendEditViewCommand { get; private set; }
 
-        private IEventAggregator _eventAggregator;
+        public string DisplayMember
+        {
+            get
+            {
+                return _displayMember;
+            }
+            set
+            {
+                _displayMember = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }
