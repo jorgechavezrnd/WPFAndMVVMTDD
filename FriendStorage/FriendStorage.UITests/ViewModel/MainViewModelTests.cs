@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using FriendStorage.UITests.Extensions;
 
 namespace FriendStorage.UITests.ViewModel
 {
@@ -77,6 +78,18 @@ namespace FriendStorage.UITests.ViewModel
             _openFriendEditViewEvent.Publish(7);
 
             Assert.Equal(3, _viewModel.FriendEditViewModels.Count);
+        }
+
+        [Fact]
+        public void ShouldRaisePropertyChangedEventForSelectedFriendEditViewModel()
+        {
+            var friendEditVmMock = new Mock<IFriendEditViewModel>();
+            var fired = _viewModel.IsPropertyChangedFired(() =>
+            {
+                _viewModel.SelectedFriendEditViewModel = friendEditVmMock.Object;
+            }, nameof(_viewModel.SelectedFriendEditViewModel));
+
+            Assert.True(fired);
         }
     }
 }

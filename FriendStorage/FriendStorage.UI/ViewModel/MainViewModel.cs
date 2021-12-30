@@ -37,7 +37,19 @@ namespace FriendStorage.UI.ViewModel
 
         public INavigationViewModel NavigationViewModel { get; private set; }
         public ObservableCollection<IFriendEditViewModel> FriendEditViewModels { get; private set; }
-        public IFriendEditViewModel SelectedFriendEditViewModel { get => _selectedFriendEditViewModel; set => _selectedFriendEditViewModel = value; }
+        public IFriendEditViewModel SelectedFriendEditViewModel
+        {
+            get
+            {
+                return _selectedFriendEditViewModel;
+            }
+
+            set
+            {
+                _selectedFriendEditViewModel = value;
+                OnPropertyChanged();
+            }
+        }
 
         public void Load()
         {
