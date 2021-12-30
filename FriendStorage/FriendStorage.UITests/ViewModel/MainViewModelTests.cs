@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using FriendStorage.UITests.Extensions;
+using FriendStorage.UI.Wrapper;
 
 namespace FriendStorage.UITests.ViewModel
 {
@@ -42,7 +43,7 @@ namespace FriendStorage.UITests.ViewModel
                 .Callback<int>(friendId =>
                 {
                     friendEditViewModelMock.Setup(vm => vm.Friend)
-                    .Returns(new Friend { Id = friendId });
+                    .Returns(new FriendWrapper(new Friend { Id = friendId }));
                 });
             _friendEditViewModelMocks.Add(friendEditViewModelMock);
             return friendEditViewModelMock.Object;
