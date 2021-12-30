@@ -86,7 +86,7 @@ namespace FriendStorage.UI.ViewModel
 
         private bool OnDeleteCanExecute(object arg)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
