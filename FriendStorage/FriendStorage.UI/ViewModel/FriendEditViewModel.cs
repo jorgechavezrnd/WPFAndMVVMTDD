@@ -52,7 +52,7 @@ namespace FriendStorage.UI.ViewModel
 
         private bool OnSaveCanExecute(object arg)
         {
-            throw new NotImplementedException();
+            return false;
         }
     }
 }
