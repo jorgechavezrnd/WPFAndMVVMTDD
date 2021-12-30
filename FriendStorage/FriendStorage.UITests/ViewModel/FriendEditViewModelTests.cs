@@ -97,6 +97,17 @@ namespace FriendStorage.UITests.ViewModel
         }
 
         [Fact]
+        public void ShouldRaiseCanExecuteChangedForDeleteCommandWhenAcceptingChanges()
+        {
+            _viewModel.Load(_friendId);
+            var fired = false;
+            _viewModel.Friend.FirstName = "Changed";
+            _viewModel.DeleteCommand.CanExecuteChanged += (s, e) => fired = true;
+            _viewModel.Friend.AcceptChanges();
+            Assert.True(fired);
+        }
+
+        [Fact]
         public void ShouldCallSaveMethodOfDataProviderWhenSaveCommandIsExecuted()
         {
             _viewModel.Load(_friendId);
