@@ -1,14 +1,10 @@
 ﻿using Autofac;
 using FriendStorage.DataAccess;
 using FriendStorage.UI.DataProvider;
+using FriendStorage.UI.Dialogs;
 using FriendStorage.UI.View;
 using FriendStorage.UI.ViewModel;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FriendStorage.UI.Startup
 {
@@ -20,6 +16,9 @@ namespace FriendStorage.UI.Startup
 
             builder.RegisterType<EventAggregator>()
                 .As<IEventAggregator>().SingleInstance();
+
+            builder.RegisterType<MessageDialogService>()
+                .As<IMessageDialogService>();
 
             builder.RegisterType<MainWindow>().AsSelf();
             builder.RegisterType<MainViewModel>().AsSelf();
