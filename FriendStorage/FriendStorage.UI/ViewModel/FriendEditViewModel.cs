@@ -6,6 +6,7 @@ using FriendStorage.UI.Wrapper;
 using Prism.Events;
 using System;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace FriendStorage.UI.ViewModel
@@ -87,8 +88,14 @@ namespace FriendStorage.UI.ViewModel
 
         private void OnDeleteExecute(object obj)
         {
-            _dataProvider.DeleteFriend(Friend.Id);
-            _eventAggregator.GetEvent<FriendDeletedEvent>().Publish(Friend.Id);
+            var result = MessageBox.Show("Do you really want to delete the friend",
+                "Delete friend",
+                MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                _dataProvider.DeleteFriend(Friend.Id);
+                _eventAggregator.GetEvent<FriendDeletedEvent>().Publish(Friend.Id);
+            }
         }
 
         private bool OnDeleteCanExecute(object arg)
