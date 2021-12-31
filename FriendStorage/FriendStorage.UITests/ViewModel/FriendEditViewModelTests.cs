@@ -191,17 +191,21 @@ namespace FriendStorage.UITests.ViewModel
             Assert.False(_viewModel.DeleteCommand.CanExecute(null));
         }
 
-        [Fact]
-        public void ShouldCallDeleteFriendWhenDeleteCommandIsExecuted()
+        [Theory]
+        [InlineData(MessageDialogResult.Yes, 1)]
+        [InlineData(MessageDialogResult.No, 0)]
+        public void ShouldCallDeleteFriendWhenDeleteCommandIsExecuted(
+            MessageDialogResult result, int expectedDeleteFriendCalls)
         {
             _viewModel.Load(_friendId);
 
             _messageDialogServiceMock.Setup(ds => ds.ShowYesNoDialaog(It.IsAny<string>(),
-                It.IsAny<string>())).Returns(MessageDialogResult.Yes);
+                It.IsAny<string>())).Returns(result);
 
             _viewModel.DeleteCommand.Execute(null);
 
-            _dataProviderMock.Verify(dp => dp.DeleteFriend(_friendId), Times.Once);
+            _dataProviderMock.Verify(dp => dp.DeleteFriend(_friendId),
+                Times.Exactly(expectedDeleteFriendCalls));
             _messageDialogServiceMock.Verify(ds => ds.ShowYesNoDialaog(It.IsAny<string>(),
                 It.IsAny<string>()), Times.Once);
         }
