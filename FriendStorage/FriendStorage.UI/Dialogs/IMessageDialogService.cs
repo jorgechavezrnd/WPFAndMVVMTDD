@@ -2,7 +2,7 @@
 {
     public interface IMessageDialogService
     {
-        MessageDialogResult ShowYesNoDialaog(string title, string message);
+        MessageDialogResult ShowYesNoDialog(string title, string message);
     }
 
     public enum MessageDialogResult
