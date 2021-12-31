@@ -90,6 +90,8 @@ namespace FriendStorage.UI.ViewModel
 
         private void OnDeleteExecute(object obj)
         {
+            var result = _messageDialogService.ShowYesNoDialaog("Delete friend", "");
+
             _dataProvider.DeleteFriend(Friend.Id);
             _eventAggregator.GetEvent<FriendDeletedEvent>().Publish(Friend.Id);
         }

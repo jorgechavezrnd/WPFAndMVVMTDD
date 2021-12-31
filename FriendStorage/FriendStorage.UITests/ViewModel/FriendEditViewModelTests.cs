@@ -196,9 +196,14 @@ namespace FriendStorage.UITests.ViewModel
         {
             _viewModel.Load(_friendId);
 
+            _messageDialogServiceMock.Setup(ds => ds.ShowYesNoDialaog(It.IsAny<string>(),
+                It.IsAny<string>())).Returns(MessageDialogResult.Yes);
+
             _viewModel.DeleteCommand.Execute(null);
 
             _dataProviderMock.Verify(dp => dp.DeleteFriend(_friendId), Times.Once);
+            _messageDialogServiceMock.Verify(ds => ds.ShowYesNoDialaog(It.IsAny<string>(),
+                It.IsAny<string>()), Times.Once);
         }
 
         [Fact]
