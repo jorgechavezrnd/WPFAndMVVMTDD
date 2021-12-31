@@ -88,14 +88,8 @@ namespace FriendStorage.UI.ViewModel
 
         private void OnDeleteExecute(object obj)
         {
-            var result = MessageBox.Show("Do you really want to delete the friend",
-                "Delete friend",
-                MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
-            {
-                _dataProvider.DeleteFriend(Friend.Id);
-                _eventAggregator.GetEvent<FriendDeletedEvent>().Publish(Friend.Id);
-            }
+            _dataProvider.DeleteFriend(Friend.Id);
+            _eventAggregator.GetEvent<FriendDeletedEvent>().Publish(Friend.Id);
         }
 
         private bool OnDeleteCanExecute(object arg)
